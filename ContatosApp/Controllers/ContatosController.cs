@@ -8,5 +8,9 @@ namespace ContatosApp.Controllers
         {
             return View();
         }
-    }
+		public IActionResult CriarContato()
+		{
+			return View();
+		}
+	}
 }
