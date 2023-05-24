@@ -16,10 +16,12 @@ namespace ContatosApp.Controllers
 		{
 			return View();
 		}
-		public IActionResult ApagarContato()
+		public IActionResult ApagarContatoConfirmar()
+		{
+			return View();
+		}public IActionResult ApagarContato()
 		{
 			return View();
 		}
-
 	}
 }
