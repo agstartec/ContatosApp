@@ -20,9 +20,10 @@ namespace ContatosApp.Controllers
 		{
 			return View();
 		}
-		public IActionResult EditarContato()
+		public IActionResult EditarContato(int id)
 		{
-			return View();
+			ContatoModel contato =  _contatoRepositorio.ListarContato(id);
+			return View(contato);
 		}
 		public IActionResult ApagarContatoConfirmar()
 		{
@@ -34,6 +35,13 @@ namespace ContatosApp.Controllers
 		[HttpPost]
 		public IActionResult CriarContato(ContatoModel contato) {
 			_contatoRepositorio.Adicionar(contato);
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public IActionResult EditarContato(ContatoModel contato)
+		{
+			_contatoRepositorio.Editar(contato);
 			return RedirectToAction("Index");
 		}
 	}

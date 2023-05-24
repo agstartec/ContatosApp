@@ -21,6 +21,25 @@ namespace ContatosApp.Repositorio
 			return contato;
 		}
 
+		public ContatoModel ListarContato(int id)
+		{
+			return _context.contatos.FirstOrDefault(x => x.id == id);
+		}
 
+		public ContatoModel Editar(ContatoModel contato)
+		{
+			ContatoModel contatoDb = ListarContato(contato.id);
+			
+			if (contatoDb == null) throw new System.Exception("Erro interno: falha na atualização do cliente");
+
+			contatoDb.nome = contato.nome;
+			contatoDb.telefone = contato.telefone;
+			contatoDb.email = contato.email;
+
+			_context.contatos.Update(contatoDb);
+			_context.SaveChanges();
+
+			return contatoDb;
+        }
 	}
 }
