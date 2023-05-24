@@ -12,5 +12,14 @@ namespace ContatosApp.Controllers
 		{
 			return View();
 		}
+		public IActionResult EditarContato()
+		{
+			return View();
+		}
+		public IActionResult ApagarContato()
+		{
+			return View();
+		}
+
 	}
 }
