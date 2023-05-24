@@ -10,11 +10,17 @@ namespace ContatosApp.Repositorio
         {
             _context = context;
         }
-        public ContatoModel Adicionar(ContatoModel contato)
+		public List<ContatoModel> ListarTodos()
+		{
+			return _context.contatos.ToList();
+		}
+		public ContatoModel Adicionar(ContatoModel contato)
 		{
 			_context.contatos.Add(contato);
 			_context.SaveChanges();
 			return contato;
 		}
+
+
 	}
 }

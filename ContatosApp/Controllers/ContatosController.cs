@@ -13,7 +13,8 @@ namespace ContatosApp.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+			List<ContatoModel> contatos = _contatoRepositorio.ListarTodos();
+            return View(contatos);
         }
 		public IActionResult CriarContato()
 		{
