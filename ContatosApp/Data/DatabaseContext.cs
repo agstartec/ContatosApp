@@ -7,5 +7,6 @@ namespace ContatosApp.Data
 	{
 		public DatabaseContext(DbContextOptions<DatabaseContext> options):base(options) { }
 		public DbSet<ContatoModel> contatos { get; set; }
+		public DbSet<UsuarioModel> usuarios { get; set; }
 	}
 }
