@@ -28,8 +28,7 @@ namespace ContatosApp.Repositorio
 
 		public ContatoModel Editar(ContatoModel contato)
 		{
-			ContatoModel contatoDb = ListarContato(contato.id);
-			
+			ContatoModel contatoDb = ListarContato(contato.id);			
 			if (contatoDb == null) throw new System.Exception("Erro interno: falha na atualização do cliente");
 
 			contatoDb.nome = contato.nome;
@@ -41,5 +40,16 @@ namespace ContatosApp.Repositorio
 
 			return contatoDb;
         }
+
+		public bool Apagar(int id)
+		{
+			ContatoModel contatoDb = ListarContato(id);
+			if (contatoDb == null) throw new System.Exception("Erro interno: falha ao deletar o cliente");
+			
+			_context.contatos.Remove(contatoDb);
+			_context.SaveChanges();
+
+			return true;
+		}
 	}
 }

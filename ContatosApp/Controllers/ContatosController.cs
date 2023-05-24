@@ -25,12 +25,15 @@ namespace ContatosApp.Controllers
 			ContatoModel contato =  _contatoRepositorio.ListarContato(id);
 			return View(contato);
 		}
-		public IActionResult ApagarContatoConfirmar()
+		public IActionResult ApagarContatoConfirmar(int id)
 		{
-			return View();
-		}public IActionResult ApagarContato()
+			ContatoModel contato = _contatoRepositorio.ListarContato(id);
+			return View(contato);
+		}
+		public IActionResult ApagarContato(int id)
 		{
-			return View();
+			_contatoRepositorio.Apagar(id);
+			return RedirectToAction("Index");
 		}
 		[HttpPost]
 		public IActionResult CriarContato(ContatoModel contato) {
