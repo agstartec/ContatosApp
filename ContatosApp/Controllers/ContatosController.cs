@@ -37,15 +37,31 @@ namespace ContatosApp.Controllers
 		}
 		[HttpPost]
 		public IActionResult CriarContato(ContatoModel contato) {
-			_contatoRepositorio.Adicionar(contato);
-			return RedirectToAction("Index");
-		}
+            if (ModelState.IsValid)
+            {
+				_contatoRepositorio.Adicionar(contato);
+				return RedirectToAction("Index");
+			}
+            else
+            {
+                return View();
+            }
+
+        }
 
 		[HttpPost]
 		public IActionResult EditarContato(ContatoModel contato)
 		{
-			_contatoRepositorio.Editar(contato);
-			return RedirectToAction("Index");
-		}
+			if (ModelState.IsValid)
+			{
+				_contatoRepositorio.Editar(contato);
+				return RedirectToAction("Index");
+
+			}
+            else
+            {
+                return View();
+            }
+        }
 	}
 }

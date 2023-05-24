@@ -7,15 +7,18 @@
 	@using (Html.BeginForm("CriarContato", "Contatos", FormMethod.Post))
 {
 	<div class="form-floating mb-3">
-	  <input type="text" asp-for="nome" class="form-control" id="floatingInput">
+			<input type="text" asp-for="nome" class="form-control customLength" data-val="true">
+			<span asp-validation-for="nome"></span>
 	  <label for="floatingInput">Nome</label>
 	</div>
 	<div class="form-floating mb-3">
-	  <input type="tel" asp-for="telefone" class="form-control" id="floatingInput">
+			  <input type="tel" asp-for="telefone" class="form-control" id="telefone">
+				  <span asp-validation-for="telefone"></span>
 	  <label for="floatingInput">Telefone</label>
 	</div>
 	<div class="form-floating mb-3">
-		  <input type="email" asp-for="email" class="form-control" id="floatingInput">
+		  <input type="email" asp-for="email" class="form-control">
+			  <span asp-validation-for="email"></span>
 	  <label for="floatingInput">Email</label>
 	</div>
 	<div class="d-grid mt-3 d-md-flex">
@@ -24,3 +27,9 @@
 	</div>
 }
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$.validator.addMethod("customLength", function(value, element) {
+   return value.length > 5;
+}, "O nome deve ter no mínimo 6 caracteres.");
+</script>
